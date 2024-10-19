@@ -2,7 +2,7 @@
 
 This project is just a project example to learn how to use Basic Authentication in Ionic 8 (frontend) and NodeJS (backend) using Sequelize as ORM to access a MySQL database.
 
-![screenshots](https://github.com/tcrurav/Ionic8NodeAuthBasic/blob/master/screenshots/Login.png)
+![screenshots](screenshots/Login.png)
 
 ## Getting Started
 
