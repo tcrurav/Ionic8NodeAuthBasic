@@ -45,7 +45,7 @@ npm install
 1. You need a Ionic8NodeAuthBasic/backend/.env file with a key for the JWT and the data for the connection to your MySQL Server:
 
 ```
-JWT_SECRET=V3RY#1MP0RT@NT$3CR3T#
+JWT_SECRET=AVeryStrongPasswordSoThatNobodyCouldBreakIt
 
 MYSQL_DATABASE=db_motorbikes_dev
 MYSQL_USER=root
