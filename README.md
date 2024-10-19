@@ -1,14 +1,14 @@
 # Ionic (frontend) and NodeJs (backend) Example using Basic Authentication
 
-This project is just a project example to learn how to use Basic Authentication in Ionic 5 (frontend) and NodeJS (backend) using Sequelize as ORM to access a MySQL database.
+This project is just a project example to learn how to use Basic Authentication in Ionic 8 (frontend) and NodeJS (backend) using Sequelize as ORM to access a MySQL database.
 
-![screenshots](https://github.com/tcrurav/Ionic5NodeAuthBasic/blob/master/screenshots/Login.png)
+![screenshots](https://github.com/tcrurav/Ionic8NodeAuthBasic/blob/master/screenshots/Login.png)
 
 ## Getting Started
 
 Download links:
 
-From Github: https://github.com/tcrurav/Ionic5NodeAuthBasic.git
+From Github: https://github.com/tcrurav/Ionic8NodeAuthBasic.git
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ You need a working environment with:
 The best option to start with this project is cloning it in your PC:
 
 ```
-git clone https://github.com/tcrurav/Ionic5NodeAuthBasic.git
+git clone https://github.com/tcrurav/Ionic8NodeAuthBasic.git
 ```
 
 This project contains 2 different parts:
@@ -34,15 +34,15 @@ You need a node.js working environment. The LTS is recommended: https://nodejs.o
 Once you have cloned the project install all dependencies.
 
 ```
-cd Ionic5NodeAuthBasic/frontend
+cd Ionic8NodeAuthBasic/frontend
 npm install
 
-cd Ionic5NodeAuthBasic/backend
+cd Ionic8NodeAuthBasic/backend
 npm install
 ```
 
 * For your backend part:
-1. You need a Ionic5NodeAuthBasic/backend/.env file with a key for the JWT and the data for the connection to your MySQL Server:
+1. You need a Ionic8NodeAuthBasic/backend/.env file with a key for the JWT and the data for the connection to your MySQL Server:
 
 ```
 JWT_SECRET=V3RY#1MP0RT@NT$3CR3T#
@@ -59,16 +59,16 @@ NODE_ENV=development
 
 2. You need a mysql server working.
 
-3. Create the mysql database, that in our case is "db_motorbikes_dev". You can import it from the file db_motorbikes_dev.sql included in this project. https://github.com/tcrurav/Ionic5NodeAuthBasic/blob/master/backend/db_motorbikes_dev.sql
+3. Create the mysql database, that in our case is "db_motorbikes_dev". You can import it from the file db_motorbikes_dev.sql included in this project. https://github.com/tcrurav/Ionic8NodeAuthBasic/blob/master/backend/db_motorbikes_dev.sql
 
 
 Finally to start enjoying this project.
 
 ```
-cd Ionic5NodeAuthBasic/backend
+cd Ionic8NodeAuthBasic/backend
 npm start
 
-cd Ionic5NodeAuthBasic/frontend
+cd Ionic8NodeAuthBasic/frontend
 ionic serve
 ```
 

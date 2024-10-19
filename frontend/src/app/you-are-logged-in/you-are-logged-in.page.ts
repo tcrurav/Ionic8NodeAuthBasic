@@ -11,39 +11,38 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class YouAreLoggedInPage implements OnInit {
 
-  initialized: boolean = false;
-
   constructor(
     private authService: AuthService,
     private motorbikeService: MotorbikeService,
-    private router: Router, 
+    private router: Router,
     private storage: Storage) { }
 
-    async ngOnInit() {
-      if(!this.initialized) await this.storage.create();
-      this.getMotorbikes();
-    }
-  
-    ionViewDidEnter(){
-      this.getMotorbikes();
-    }
-  
-    async getMotorbikes() {
-      let token = await this.storage.get("token");
-      this.motorbikeService.getMotorbikes(token).subscribe(res => {
+  async ngOnInit() {
+    this.getMotorbikes();
+  }
+
+  ionViewDidEnter() {
+    this.getMotorbikes();
+  }
+
+  async getMotorbikes() {
+    let token = await this.storage.get("token");
+    this.motorbikeService.getMotorbikes(token).subscribe({
+      next: res => {
         console.log("User Logged in. This is the motorbike list:");
         console.log(res);
-      }, error => {
+      }, error: error => {
         console.log(error);
         console.log("User not authenticated. Please log in");
         this.router.navigateByUrl("/home");
-      });
-    }
-  
-    logout() {
-      this.authService.logout().then(() => {
-        this.router.navigateByUrl("/home");
-      });
-    }
+      }
+    });
+  }
+
+  logout() {
+    this.authService.logout().then(() => {
+      this.router.navigateByUrl("/home");
+    });
+  }
 
 }

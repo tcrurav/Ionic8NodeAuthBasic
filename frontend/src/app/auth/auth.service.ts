@@ -1,19 +1,31 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { User } from './user';
 import { AuthResponse } from './auth-response';
 import { Observable, tap } from 'rxjs';
+import { Storage } from '@ionic/storage-angular'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  initialized: boolean = false;
+  initializedStorage: boolean = false;
 
   AUTH_SERVER_ADDRESS: string = 'http://localhost:4000';
 
-  constructor(private httpClient: HttpClient, private storage: Storage) { }
+  constructor(private httpClient: HttpClient, private storage: Storage) { 
+    this.initializeStorage();
+  }
+
+  async initializeStorage(){
+    if (!this.initializedStorage) await this.storage.create();
+    this.initializedStorage = true;
+  }
+
+  isInitializedStorage(){
+    return this.initializedStorage;
+  }
 
   private getOptions(user: User) {
     let base64UserAndPassword = window.btoa(user.username + ":" + user.password);
@@ -37,7 +49,7 @@ export class AuthService {
       tap(async (res: AuthResponse) => {
 
         if (res.user) {
-          await this.storage.setItem("token", res.access_token);
+          await this.storage.set("token", res.access_token);
         }
       })
 
@@ -49,20 +61,18 @@ export class AuthService {
       tap(async (res: AuthResponse) => {
 
         if (res.user) {
-          await this.storage.setItem("token", res.access_token);
-          // await this.storage.set("idUser", res.user.id);
+          await this.storage.set("token", res.access_token);
         }
       })
     );
   }
 
   async logout() {
-    await this.storage.removeItem("token");
+    await this.storage.remove("token");
   }
 
   async isLoggedIn() {
-    // return this.authSubject.asObservable();
-    let token = await this.storage.getItem("token");
+    let token = await this.storage.get("token");
     if (token) { //Just check if exists. This should be checked with current date
       return true;
     }
